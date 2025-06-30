@@ -11,6 +11,9 @@ RUN npm install --production
 # Copy application source
 COPY . .
 
+# Expose webhook URL environment variable
+ENV WEBHOOK "https://changeme.com"
+
 # Expose application port (change if needed)
 EXPOSE 5000
 

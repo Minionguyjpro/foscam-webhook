@@ -1,5 +1,6 @@
 import mqtt from 'mqtt';
 import http from 'http';
+import https from 'https';
 import { SMTPServer } from 'smtp-server';
 
 const webhookEndpoint = process.env.WEBHOOK || null;
@@ -22,8 +23,17 @@ const server = new SMTPServer({
         mqttClient.publish('home/camera/' + cameraName, cameraName);
 
         // HTTP webhook
-        if (process.env.webhook) {
-            http.get(process.env.webhook.replace('{name}', cameraName));
+        if (process.env.WEBHOOK) {
+            const url = process.env.WEBHOOK.replace('{name}', cameraName);
+            const isHttps = url.startsWith('https://');
+            const lib = isHttps ? https : http;
+            const req = lib.request(url, { method: 'POST' }, (res) => {
+            // Optionally handle response here
+            });
+            req.on('error', (err) => {
+            console.error('Webhook request error:', err);
+            });
+            req.end();
         }
 
         return callback();
