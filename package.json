@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Solve the absence of webhook functionality in Foscam IP cameras",
   "main": "src/index.js",
-  "engines": {
-    "node": "6.4.0"
-  },
+  "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,8 +25,8 @@
   },
   "homepage": "https://github.com/Sitebase/foscam-webhook#readme",
   "dependencies": {
-    "express": "^4.14.0",
-    "mqtt": "^1.14.1",
-    "smtp-server": "^1.14.2"
+    "express": "^5.1.0",
+    "mqtt": "^5.13.1",
+    "smtp-server": "^3.14.0"
   }
 }
