@@ -2,7 +2,7 @@ import mqtt from 'mqtt';
 import http from 'http';
 import { SMTPServer } from 'smtp-server';
 
-const webhookEndpoint = process.env.webhook || null;
+const webhookEndpoint = process.env.WEBHOOK || null;
 
 const mqttServer = process.env.MQTT_SERVER || '192.168.1.116';
 const mqttClient  = mqtt.connect('mqtt://' + mqttServer);
